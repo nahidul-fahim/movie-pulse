@@ -1,4 +1,4 @@
-## Live Site Link: [Live Site](https://movie-pulse-project.web.app/movieDetails)
+## Live Site Link: [Live Site](https://movie-pulse-project.web.app)
 
 # Features
  ### Homepage
