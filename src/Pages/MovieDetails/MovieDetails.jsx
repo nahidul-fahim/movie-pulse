@@ -1,7 +1,8 @@
 import { Link, useLocation } from "react-router-dom";
 import { IoIosHome } from "react-icons/io";
 import { FaStar } from "react-icons/fa6";
-import { useState } from "react";
+import { useRef, useState } from "react";
+import { Toaster, toast } from "sonner";
 
 
 
@@ -12,27 +13,32 @@ const MovieDetails = () => {
     const movieDetails = location?.state?.show;
     console.log(movieDetails)
     const [form, setForm] = useState(false);
+    const bookingForm = useRef(null);
+
+
 
 
     // handle Form submit
     const handleFormSubmit = e => {
         e.preventDefault();
-
         const movieName = movieDetails?.name;
         const userName = e.target.userName.value;
         const userEmail = e.target.userEmail.value;
         const userPhone = e.target.userPhone.value;
         const address = e.target.address.value;
-
         const ticketDetails = [movieName, userName, userEmail, userPhone, address]
-
         localStorage.setItem("ticket-details", ticketDetails);
+        bookingForm.current.reset();
+        setForm(false);
+        toast.success('Ticket confirmed!');
     }
 
 
 
     return (
         <div className={`movie-details-parent ${form ? "form-active-parent" : ""}`}>
+
+            <Toaster />
 
             <Link to={"/"} className="back-to-home-link"><button className="back-to-home-btn"><IoIosHome /> Back To Home</button></Link>
 
@@ -68,7 +74,7 @@ const MovieDetails = () => {
             <div className={`${form ? "active-booking-form" : "booking-form"}`}>
                 <button className="close-button" onClick={() => setForm(!form)}>Close</button>
 
-                <form onSubmit={handleFormSubmit} className="booking-form-inputs">
+                <form onSubmit={handleFormSubmit} className="booking-form-inputs" ref={bookingForm}>
                     <input type="text" className="form-input" readOnly defaultValue={movieDetails?.name} />
                     <input required type="text" name="userName" id="userName" className="form-input" placeholder={"Enter your name"} />
                     <input required type="email" name="userEmail" id="userEmail" className="form-input" placeholder={"Enter your email"} />

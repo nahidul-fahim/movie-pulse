@@ -1,8 +1,13 @@
-# React + Vite
+## Live Site Link: [Live Site](https://movie-pulse-project.web.app/movieDetails)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Features
+ ### Homepage
+ * The style is created using vanilla CSS only.
+ * Completely responsive.
 
-Currently, two official plugins are available:
+ ### Movie details page
+ * Completely responsive.
+ * The modal is created using vanilla CSS.
+ * After user fill up the form, the data are saved into the local storage.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+ ## Thank you.
