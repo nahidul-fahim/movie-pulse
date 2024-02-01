@@ -1,6 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import { IoIosHome } from "react-icons/io";
 import { FaStar } from "react-icons/fa6";
+import { useState } from "react";
 
 
 
@@ -10,11 +11,28 @@ const MovieDetails = () => {
     const location = useLocation();
     const movieDetails = location?.state?.show;
     console.log(movieDetails)
+    const [form, setForm] = useState(false);
+
+
+    // handle Form submit
+    const handleFormSubmit = e => {
+        e.preventDefault();
+
+        const movieName = movieDetails?.name;
+        const userName = e.target.userName.value;
+        const userEmail = e.target.userEmail.value;
+        const userPhone = e.target.userPhone.value;
+        const address = e.target.address.value;
+
+        const ticketDetails = [movieName, userName, userEmail, userPhone, address]
+
+        localStorage.setItem("ticket-details", ticketDetails);
+    }
 
 
 
     return (
-        <div className="movie-details-parent">
+        <div className={`movie-details-parent ${form ? "form-active-parent" : ""}`}>
 
             <Link to={"/"} className="back-to-home-link"><button className="back-to-home-btn"><IoIosHome /> Back To Home</button></Link>
 
@@ -39,14 +57,25 @@ const MovieDetails = () => {
                 <p className="bold-text">Language: {movieDetails?.language}</p>
                 <p className="bold-text">Runtime: {movieDetails?.runtime || "N/A"} min</p>
 
-                <Link to={"/movieDetails"} style={{ width: "100%" }}><button className="link-button">Book Ticket</button></Link>
+                <button onClick={() => setForm(!form)} className="link-button">Book Ticket</button>
             </div>
 
 
 
             {/* form */}
-            <div>
-                
+            <div className={`${form ? "active-booking-form" : "booking-form"}`}>
+                <button className="close-button" onClick={() => setForm(!form)}>Close</button>
+
+                <form onSubmit={handleFormSubmit} className="booking-form-inputs">
+                    <input type="text" className="form-input" readOnly defaultValue={movieDetails?.name} />
+                    <input required type="text" name="userName" id="userName" className="form-input" placeholder={"Enter your name"} />
+                    <input required type="email" name="userEmail" id="userEmail" className="form-input" placeholder={"Enter your email"} />
+                    <input required type="tel" name="userPhone" id="userPhone" className="form-input" placeholder={"Enter your phone"} />
+                    <textarea required name="address" id="address" className="form-input" placeholder="Enter your address"></textarea>
+                    <input type="submit" value={"Confirm Booking"} className="link-button" />
+                </form>
+
+
             </div>
 
         </div>

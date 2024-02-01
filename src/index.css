@@ -144,6 +144,11 @@
   gap: 10px;
 }
 
+.form-active-parent {
+  background-color: rgba(0, 0, 0, 0.733);
+  transition: all 0.8s;
+}
+
 
 .back-to-home-link {
   position: absolute;
@@ -165,7 +170,7 @@
   cursor: pointer;
 }
 
-.bold-text{
+.bold-text {
   color: black;
   font-size: 18px;
   font-weight: 600;
@@ -176,7 +181,58 @@
 
 .flex-div {
   display: flex;
-  justify-content:  center;
+  justify-content: center;
   align-items: center;
   gap: 10px;
+}
+
+
+
+
+/* Booking form */
+
+.booking-form {
+  height: 500px;
+  width: 500px;
+  z-index: -10;
+  opacity: 0;
+  position: absolute;
+}
+
+.active-booking-form {
+  position: absolute;
+  height: 700px;
+  width: 70%;
+  z-index: 99;
+  opacity: 100%;
+  background-color: rgb(255, 255, 255);
+  transition: all 0.5s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.booking-form-inputs {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  width: 50%;
+}
+
+.form-input {
+  width: 100%;
+  padding: 15px 20px;
+  font-size: 17px;
+  border: 1px solid rgb(184, 184, 184);
+  border-radius: 100px;
+}
+
+.close-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  text-decoration: none;
 }
