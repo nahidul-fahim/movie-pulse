@@ -36,10 +36,12 @@ const MovieDetails = () => {
 
             <Link to={"/"} className="back-to-home-link"><button className="back-to-home-btn"><IoIosHome /> Back To Home</button></Link>
 
+            {/* movie poster */}
             <div>
                 <img src={movieDetails?.image?.original} alt="" className="detail-poster" />
             </div>
 
+            {/* movie details */}
             <div className="details-div">
                 <h2 className="card-heading">{movieDetails?.name}</h2>
                 <p>{movieDetails?.summary}</p>
@@ -62,7 +64,7 @@ const MovieDetails = () => {
 
 
 
-            {/* form */}
+            {/* ticket booking form */}
             <div className={`${form ? "active-booking-form" : "booking-form"}`}>
                 <button className="close-button" onClick={() => setForm(!form)}>Close</button>
 
