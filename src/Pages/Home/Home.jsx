@@ -39,7 +39,7 @@ const Home = () => {
                                     <p className="rating">{singleShow?.show?.rating?.average}<FaStar /></p> : ""
                             }
                         </div>
-                        <Link style={{width: "100%"}}><button className="link-button">See Details</button></Link>
+                        <Link to={"/movieDetails"} state={singleShow} style={{width: "100%"}}><button className="link-button">See Details</button></Link>
                     </div>
                 )
             }
